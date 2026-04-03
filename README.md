@@ -6,11 +6,10 @@ AstraCompute is a full-stack systems project that routes compute-heavy tasks acr
 
 ## Live Links
 
-- Live Demo: `ADD_YOUR_FRONTEND_RENDER_URL_HERE`
-- Backend API: [https://astracompute-backend.onrender.com](https://astracompute-backend.onrender.com)
-- Repository: [https://github.com/Amrutha-space/AstraCompute](https://github.com/Amrutha-space/AstraCompute)
+- Live Demo: [https://astracompute.onrender.com]
+- Backend API: [https://astracompute-backend.onrender.com]
+- Repository: [https://github.com/Amrutha-space/AstraCompute]
 
-Once your frontend deploy is live, replace `ADD_YOUR_FRONTEND_RENDER_URL_HERE` with your Render static site URL.
 
 ## Why This Project Stands Out
 
@@ -72,29 +71,6 @@ flowchart LR
 - Persistence: SQLite and CSV logging
 - Deployment: Render static site + Render web service
 
-## Monorepo Structure
-
-```text
-AstraCompute/
-├── backend/        # Express API, queue orchestration, auth, persistence
-├── core-engine/    # Shared scheduler logic, task models, execution contracts
-├── dashboard/      # Visual assets and screenshots
-├── docker/         # Nginx and container deployment assets
-├── frontend/       # React application and product UI
-├── logs/           # SQLite database and CSV execution logs
-└── README.md
-```
-
-## Scheduler Behavior
-
-The scheduler begins with heuristics that match real heterogeneous compute tradeoffs:
-
-- small workloads generally stay on CPU
-- larger workloads are candidates for the GPU lane
-- higher-priority tasks move earlier in the queue
-
-After tasks finish, AstraCompute stores timing history by workload class, size bucket, and executor. Future decisions can override the initial heuristic when measured data suggests a better choice. This creates a scheduler that is both explainable and adaptive.
-
 ## Local Development
 
 ### Requirements
@@ -148,12 +124,6 @@ LOG_FILE=/tmp/logs.csv
 FRONTEND_ORIGIN=https://your-frontend-url.onrender.com
 ```
 
-Notes:
-
-- `/tmp` works for free hosting and demos, but data is ephemeral across redeploys
-- for durable persistence, migrate from SQLite-on-disk to a hosted Postgres service
-- the frontend production build defaults to same-origin `/api` when no override is set
-
 ## API Highlights
 
 - `POST /api/auth/signup`
@@ -172,15 +142,6 @@ Notes:
 - `POST /api/system/reset-history`
 - `GET /api/stream`
 
-## Testing And Validation
-
-Automated coverage includes:
-
-- scheduler policy selection
-- adaptive metrics updates
-- task lifecycle behavior
-- persistence and restart recovery
-- authentication flows
 
 Run:
 
@@ -188,28 +149,5 @@ Run:
 npm run test
 ```
 
-## Dashboard Preview
-
-Add a real product screenshot here once you capture your deployed UI:
-
-![AstraCompute dashboard placeholder](/Users/amrutha/DimensionProjects/AstraCompute/dashboard/dashboard-placeholder.svg)
-
-## Engineering Notes
-
-This project was built to demonstrate:
-
-- systems design thinking
-- concurrent execution patterns
-- performance-aware backend logic
-- product-minded frontend architecture
-- operational visibility through metrics, benchmarks, and explainability
-
-It is especially strong as a portfolio project because it combines low-level execution concerns with a polished operator-facing interface instead of stopping at algorithm demos or static dashboards.
-
-## What I Would Build Next
-
-- Replace the simulated GPU lane with Metal or WebGPU on macOS
-- Move persistence to Postgres for free-tier durable cloud deployment
-- Add richer job types and input-file workflows
-- Add tenant-aware auth and role-based access
-- Add benchmark export and shareable reports
+Author - Amrutha 
+Built for engineers to ENGINEER.
